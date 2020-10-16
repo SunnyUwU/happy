@@ -1,10 +1,8 @@
 //importar dependências
 const database = require('sqlite-async');
 
-database.open(__dirname + '/database.sqlite').then(execute)
-
 function execute(db) {
-    db.exec(`
+    return db.exec(`
         CREATE TABLE IF NOT EXISTS orphanages (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             lat TEXT,
@@ -19,3 +17,5 @@ function execute(db) {
         );
     `)
 }
+
+module.exports = database.open(__dirname + '/database.sqlite').then(execute) //db
