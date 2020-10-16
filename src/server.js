@@ -1,6 +1,8 @@
 //importar dependência
 const express = require('express');
 const path = require('path')
+const pages = require('./pages.js')
+
 
 //iniciando o express
 const server = express()
@@ -11,11 +13,12 @@ server
 //configurar template
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'hbs')
-//criar rota
-.get('/', (request, response) => {
-    console.log(request.query)
-    return response.render('index')
-})
+
+//rotas da aplicação
+.get('/', pages.index)
+.get('/orphanages', pages.orphanages)
+.get('/orphanage', pages.orphanage)
+.get('/create-orphanage', pages.createOrphanage)
 
 //ligar o server
 server.listen(5500)
