@@ -1,4 +1,4 @@
-const map = L.map('mapid').setView([-8.0544383, -34.9100154], 15);
+const map = L.map('mapid').setView([-8.0544383, -34.9100154], 14);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -80,7 +80,7 @@ function toggleSelect(event) {
     const button = event.currentTarget
     button.classList.add('active')
     //atualizar o input hidden
-    const input = document.querySelector('[name="open-on-weekends"]')
+    const input = document.querySelector('[name="open_on_weekends"]')
 
     //verificar se sim ou não
     input.value = button.dataset.value

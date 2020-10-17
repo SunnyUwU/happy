@@ -7,18 +7,21 @@ const pages = require('./pages.js')
 //iniciando o express
 const server = express()
 server
-//utilizando arquivos estáticos
-.use(express.static('public'))
+    //utilizar body do req
+    .use(express.urlencoded({extended: true}))
+    //utilizando arquivos estáticos
+    .use(express.static('public'))
 
-//configurar template
-.set('views', path.join(__dirname, 'views'))
-.set('view engine', 'hbs')
+    //configurar template
+    .set('views', path.join(__dirname, 'views'))
+    .set('view engine', 'hbs')
 
-//rotas da aplicação
-.get('/', pages.index)
-.get('/orphanages', pages.orphanages)
-.get('/orphanage', pages.orphanage)
-.get('/create-orphanage', pages.createOrphanage)
+    //rotas da aplicação
+    .get('/', pages.index)
+    .get('/orphanages', pages.orphanages)
+    .get('/orphanage', pages.orphanage)
+    .get('/create-orphanage', pages.createOrphanage)
+    .post('/save-orphanage', pages.saveOrphanage)
 
-//ligar o server
-server.listen(5500)
+    //ligar o server
+    server.listen(5500)
